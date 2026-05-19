@@ -1,0 +1,27 @@
+
+
+### Full Case 1 Test
+POST http://localhost:8081/api/calculate
+Content-Type: application/json
+
+{
+  "priorityOrder": ["BOD", "COD", "TSS", "O&M", "CapEx", "Power", "Land", "GWP", "EP"],
+  "comparativeRatios": {
+    "BOD/COD": 1.10,
+    "COD/TSS": 1.10,
+    "TSS/O&M": 1.25,
+    "O&M/CapEx": 1.20,
+    "CapEx/Power": 1.15,
+    "Power/Land": 1.20,
+    "Land/GWP": 1.25,
+    "GWP/EP": 1.15
+  },
+  "decisionMatrix": {
+    "MBBR": { "Power": 450, "Land": 500,  "CapEx": 2.8, "O&M": 3.2,   "BOD": 90, "COD": 85,   "TSS": 88, "GWP": 0.35,   "EP": 0.12  },
+    "MBR":  { "Power": 600, "Land": 400,  "CapEx": 4.2, "O&M": 4.5,   "BOD": 96, "COD": 93,   "TSS": 95, "GWP": 0.50,   "EP": 0.080  },
+    "UASB": { "Power": 250, "Land": 700, "CapEx": 1.8, "O&M": 2, "BOD": 75, "COD": 70,   "TSS": 72, "GWP": 0.2,   "EP": 0.25 },
+    "SBR":  { "Power": 500, "Land": 450,  "CapEx": 3.5, "O&M": 3.8, "BOD": 92, "COD": 88,   "TSS": 90, "GWP": 0.4,   "EP": 0.1  },
+    "ASP":  { "Power": 350, "Land": 600, "CapEx": 2.2, "O&M": 2.5,   "BOD": 80, "COD": 78, "TSS": 80, "GWP": 0.28,   "EP": 0.18  }
+  },
+  "benefitCriteria": ["BOD", "COD", "TSS"]
+}
