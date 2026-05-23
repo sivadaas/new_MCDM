@@ -1,0 +1,7 @@
+### Step 4: Get All Projects
+GET http://localhost:8082/api/projects
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkaXZ5YW5zaEBnbWFpbC5jb20iLCJyb2xlIjoiRU5HSU5FRVIiLCJpYXQiOjE3Nzk1MzI2OTMsImV4cCI6MTc3OTYxOTA5M30.LzTTg1P6qqelybGwYDQxjw2HtM2anY-YbHGFxxFZ_HU
+
+### Step 5: Get Analysis History
+GET http://localhost:8082/api/projects/1/analyses
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkaXZ5YW5zaEBnbWFpbC5jb20iLCJyb2xlIjoiRU5HSU5FRVIiLCJpYXQiOjE3Nzk1MzI2OTMsImV4cCI6MTc3OTYxOTA5M30.LzTTg1P6qqelybGwYDQxjw2HtM2anY-YbHGFxxFZ_HU

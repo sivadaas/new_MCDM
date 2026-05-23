@@ -1,7 +1,7 @@
 
 
 ### Full Case 1 Test
-POST http://localhost:8081/api/calculate
+POST http://localhost:8080/api/calculate
 Content-Type: application/json
 
 {
