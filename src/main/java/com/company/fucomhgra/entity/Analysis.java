@@ -29,6 +29,9 @@ public class Analysis {
     @Column(name = "result_data", columnDefinition = "jsonb")
     private Map<String, Object> resultData;
 
+    @Column(name = "share_token", unique = true)
+    private String shareToken;
+
     @Column(name = "created_at")
     private LocalDateTime createdAt = LocalDateTime.now();
 }

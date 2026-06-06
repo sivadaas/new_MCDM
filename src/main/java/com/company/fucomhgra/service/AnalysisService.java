@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 @Service
 public class AnalysisService {
@@ -97,5 +98,30 @@ public class AnalysisService {
                 "DELETED_ANALYSIS",
                 "Analysis ID: " + analysisId
         );
+    }
+
+    // for sharable link
+    public String generateShareToken(Long analysisId, User user) {
+        Analysis analysis = getAnalysisById(analysisId, user);
+
+        // Generate unique token
+        String token = UUID.randomUUID().toString().replace("-", "");
+
+        analysis.setShareToken(token);
+        analysisRepository.save(analysis);
+
+        auditLogService.log(
+                user,
+                "SHARED_LINK",
+                "Analysis ID: " + analysisId
+        );
+
+        return token;
+    }
+    public Analysis getAnalysisByShareToken(String shareToken) {
+        return analysisRepository.findByShareToken(shareToken)
+                .orElseThrow(() -> new RuntimeException(
+                        "Invalid or expired share link"
+                ));
     }
 }
