@@ -1,4 +1,4 @@
-### Login
+### Step 1: Login
 POST http://localhost:8080/api/auth/google
 Content-Type: application/json
 

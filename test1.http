@@ -1,10 +1,26 @@
-### Parse Simple Excel
-POST http://localhost:8080/api/excel/parse
-Content-Type: multipart/form-data; boundary=boundary
+### Step 4: Use API Key to Calculate
+POST http://localhost:8080/api/keys/calculate
+Content-Type: application/json
+X-Api-Key: sk-wwr-7ba6e96b2fe04a48b8e8718a01822e40
 
---boundary
-Content-Disposition: form-data; name="file"; filename="case1.xlsx"
-Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
-
-< /Users/shivdaas/Downloads/case1new.xlsx
---boundary--
+{
+  "priorityOrder": ["BOD", "COD", "TSS", "O&M", "CapEx", "Power", "Land", "GWP", "EP"],
+  "comparativeRatios": {
+    "BOD/COD": 1.10,
+    "COD/TSS": 1.10,
+    "TSS/O&M": 1.25,
+    "O&M/CapEx": 1.20,
+    "CapEx/Power": 1.15,
+    "Power/Land": 1.20,
+    "Land/GWP": 1.25,
+    "GWP/EP": 1.15
+  },
+  "decisionMatrix": {
+    "MBBR": { "Power": 400, "Land": 750,  "CapEx": 1.4, "O&M": 18,   "BOD": 90, "COD": 85,   "TSS": 95, "GWP": 0.30,   "EP": 0.035  },
+    "MBR":  { "Power": 900, "Land": 500,  "CapEx": 3.5, "O&M": 80,   "BOD": 99, "COD": 90,   "TSS": 99, "GWP": 0.70,   "EP": 0.060  },
+    "UASB": { "Power": 100, "Land": 1050, "CapEx": 1.2, "O&M": 17.5, "BOD": 85, "COD": 70,   "TSS": 85, "GWP": 0.25,   "EP": 0.0275 },
+    "SBR":  { "Power": 425, "Land": 900,  "CapEx": 1.6, "O&M": 32.5, "BOD": 94, "COD": 90,   "TSS": 98, "GWP": 0.55,   "EP": 0.060  },
+    "ASP":  { "Power": 350, "Land": 1150, "CapEx": 1.5, "O&M": 35,   "BOD": 90, "COD": 82.5, "TSS": 90, "GWP": 0.45,   "EP": 0.035  }
+  },
+  "benefitCriteria": ["BOD", "COD", "TSS"]
+}
